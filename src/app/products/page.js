@@ -22,26 +22,40 @@ function ProductList() {
   }, []);
 
   return (
+
     <div>
-      <h1>Ürün Listesi</h1>
-      <ul>
-        {products.map((product, index) => (
-          <div key={index}>
-            <hr />
-            <img src={`${product.image}`} style={{ width: '400px', height: '400px' }}/>
-            <br />
-            <div>{product.name}</div>
-            <br />
-            <div>{product.price} TL</div>
-            <br />
-            <a href={`${product.url}`}>{product.url}</a>
-            <br />
-            <hr />
-          </div>
-        ))}
-      </ul>
+      <br />
+      <h3 style={{ textAlign: 'center' }}>Product Hunter</h3>
+
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+      }}>
+        <ul style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {products.map((product, index) => (
+            <div key={index} class="card" style={{ width: '400px', padding: '3em', margin: '10px', display: 'flex' , alignItems: 'center',  // Center vertically
+            justifyContent: 'center'}}>
+              <img src={`${product.image}`} style={{ width: '200px', height: '200px'}}/>
+              <div>
+                <br />
+                <h5 style={{ textDecoration: 'none', color: 'black' }}>
+                  <a href={product.url} style={{ textDecoration: 'none', color: 'black' }}>{product.name}</a>
+                </h5>        
+                <br />        
+                <div>Price : {product.price} TL</div>
+                <div>Old Price : {product.oldPrice} TL</div>
+                <div>{product.categories}</div>
+                <div>{product.store}</div>
+              </div>
+            </div>
+          ))}
+        </ul>
+      </div>
     </div>
   );
+  
 }
 
 export default ProductList;
